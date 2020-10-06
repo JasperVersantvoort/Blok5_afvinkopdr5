@@ -13,7 +13,7 @@ public class Afvink5 extends JFrame implements ActionListener {
     private JButton knop;
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Afvink5 frame = new Afvink5();
         frame.setSize(500, 500);
         frame.createGui();
@@ -21,7 +21,7 @@ public class Afvink5 extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-    private void createGui() throws InterruptedException {
+    private void createGui() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container window = getContentPane();
         window.setLayout(new FlowLayout());
@@ -45,20 +45,20 @@ public class Afvink5 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        StringBuilder s1 = new StringBuilder("");
+        StringBuilder s1 = new StringBuilder();
 
 
-        for (int i = 0; i < (textin.getText().length()); i++ ){
+        for (int i = 0; i < (textin.getText().length()); i++) {
             String c = Character.toString(textin.getText().charAt(i));
             try {
-                if (i != textin.getText().length()-1) {
+                if (i != textin.getText().length() - 1) {
                     s1.append(Translator.one2three(c.toUpperCase())).append("-");
                 } else { // Wanneer het de laatste is geen streepje.
                     s1.append(Translator.one2three(c.toUpperCase()));
                 }
 
             } catch (NotAnAA notAnAA) { // ongeldig aminozuur wordt aangegeven met popup
-                JOptionPane.showMessageDialog(null,"bevat ongeldig aminozuur");
+                JOptionPane.showMessageDialog(null, "bevat ongeldig aminozuur");
                 notAnAA.printStackTrace();
                 break;
             }
