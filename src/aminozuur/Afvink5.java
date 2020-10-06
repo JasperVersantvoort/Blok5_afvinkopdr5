@@ -45,9 +45,19 @@ public class Afvink5 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-//        for (int i = 0; i < (textin.getText().length(); i++) {
-//            aminozuur.Translator.one2three(str.textin.getText().charAt(i));
-            //textuit.setText(textin.getText());
+        StringBuilder s1 = new StringBuilder("");
+
+
+        for (int i = 0; i < (textin.getText().length()); i++ ){
+            String c = Character.toString(textin.getText().charAt(i));
+            try {
+                s1.append(Translator.one2three(c.toUpperCase())).append("-");
+            } catch (NotAnAA notAnAA) {
+                s1.append("bestaat niet");
+                notAnAA.printStackTrace();
+            }
         }
+
+        textuit.setText(String.valueOf(s1));
     }
 }
