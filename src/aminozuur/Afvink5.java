@@ -51,10 +51,16 @@ public class Afvink5 extends JFrame implements ActionListener {
         for (int i = 0; i < (textin.getText().length()); i++ ){
             String c = Character.toString(textin.getText().charAt(i));
             try {
-                s1.append(Translator.one2three(c.toUpperCase())).append("-");
-            } catch (NotAnAA notAnAA) {
-                s1.append("bestaat niet");
+                if (i != textin.getText().length()-1) {
+                    s1.append(Translator.one2three(c.toUpperCase())).append("-");
+                } else { // Wanneer het de laatste is geen streepje.
+                    s1.append(Translator.one2three(c.toUpperCase()));
+                }
+
+            } catch (NotAnAA notAnAA) { // ongeldig aminozuur wordt aangegeven met popup
+                JOptionPane.showMessageDialog(null,"bevat ongeldig aminozuur");
                 notAnAA.printStackTrace();
+                break;
             }
         }
 
